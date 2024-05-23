@@ -1,9 +1,15 @@
 // TODO: hämta dagens datum från store
-const Footer = () => (
-	<footer>
-		<p> Idag är det: ?????? </p>
-		<p> Studieguide | 2024 </p>
-	</footer>
-)
+import { getToday } from "../utils/date";
 
-export default Footer
+const Footer = () => {
+  const today = getToday();
+
+  return (
+    <footer>
+      <p> Idag är det: {today} </p>
+      <p> Studieguide | 2024 </p>
+    </footer>
+  );
+};
+
+export default Footer;

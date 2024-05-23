@@ -12,15 +12,9 @@ const Main = () => {
     <main>
       <div className="day-view">
         {days.map((d, index) => (
-          <Day
-            day={d}
-            dIndex={index}
-            key={
-              index}
-          />
+          <Day day={d} dIndex={index} key={index} />
         ))}
       </div>
-
       <hr />
 
       <PrioList />

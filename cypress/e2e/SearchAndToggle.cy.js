@@ -10,6 +10,7 @@ describe("search and toggle todo", () => {
     cy.get('[data-cy="filter-input"]').type(SearchInput);
     cy.get(".prio-items").first().contains(SearchInput).should("be.visible");
   });
+  //toggla todo
 
   it("toggle a todo", () => {
     cy.visit("/");

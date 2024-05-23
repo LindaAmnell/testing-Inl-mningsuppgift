@@ -1,4 +1,6 @@
 import Item from "./Item";
+import { useState } from "react";
+import { useStore } from "../../data/store";
 
 const Day = ({ day, dIndex }) => {
   const dayName = [
@@ -10,6 +12,18 @@ const Day = ({ day, dIndex }) => {
     "Lördag",
     "Söndag",
   ];
+  //   const [newTodo, setNewTodo] = useState("");
+  //   const [showInput, setShowInput] = useState(false);
+  //   const addTodo = useStore((state) => state.addTodo);
+
+  //   const handleAddTodo = (e, dayName) => {
+  //     e.preventDefault();
+  //     if (newTodo.trim() !== "") {
+  //       addTodo(dayName, newTodo);
+  //       setNewTodo("");
+  //       setShowInput(false);
+  //     }
+  //   };
 
   return (
     <div className="day">
@@ -19,9 +33,26 @@ const Day = ({ day, dIndex }) => {
       {day.map((item) => (
         <Item key={item.id} item={item} />
       ))}
-      <div className="controls">
-        <button> Ny uppgift </button>
-      </div>
+      {/* {showInput ? (
+        <div>
+          <input
+            type="text"
+            value={newTodo}
+            onChange={(e) => setNewTodo(e.target.value)}
+            placeholder="Skriv din uppgift här"
+          />
+          <button onClick={handleAddTodo} type="submit">
+            Spara
+          </button>
+          <button type="button" onClick={() => setShowInput(false)}>
+            Avbryt
+          </button>
+        </div>
+      ) : (
+        <button className="new-task-btn " onClick={() => setShowInput(true)}>
+          Ny uppgift
+        </button>
+      )} */}
     </div>
   );
 };

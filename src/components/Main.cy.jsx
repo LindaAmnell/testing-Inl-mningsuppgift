@@ -11,19 +11,28 @@ import Main from "./Main";
 // 7 det ska finnas ett element som innehåller söndag
 
 describe("<Main />", () => {
+  let weekday = [
+    "Måndag",
+    "Tisdag",
+    "Onsdag",
+    "Torsdag",
+    "Fredag",
+    "Lördag",
+    "Söndag",
+  ];
   it("renders", () => {
     // see: https://on.cypress.io/mounting-react
     cy.mount(<Main />);
   });
 
-  it("should contain monday-sunday", () => {
+  it("should contain all the days", () => {
     cy.mount(<Main />);
-    cy.get(".day-view").contains("Måndag").should("be.visible");
-    cy.get(".day-view").contains("Tisdag").should("be.visible");
-    cy.get(".day-view").contains("Onsdag").should("be.visible");
-    cy.get(".day-view").contains("Torsdag").should("be.visible");
-    cy.get(".day-view").contains("Fredag").should("be.visible");
-    cy.get(".day-view").contains("Lördag").should("be.visible");
-    cy.get(".day-view").contains("Söndag").should("be.visible");
+    cy.get(".day-view").contains(weekday[0]).should("be.visible");
+    cy.get(".day-view").contains(weekday[1]).should("be.visible");
+    cy.get(".day-view").contains(weekday[2]).should("be.visible");
+    cy.get(".day-view").contains(weekday[3]).should("be.visible");
+    cy.get(".day-view").contains(weekday[4]).should("be.visible");
+    cy.get(".day-view").contains(weekday[5]).should("be.visible");
+    cy.get(".day-view").contains(weekday[6]).should("be.visible");
   });
 });
