@@ -56,11 +56,6 @@ describe("<Item />", () => {
     cy.get('[data-cy="save"]').contains("💾").should("be.visible");
     cy.get('[data-cy="input-change"]').clear().type(newInputValue);
     cy.get('[data-cy="save"]').click();
-    // cy.get("label")
-    //   .invoke("text")
-    //   .then((text) => {
-    //     expect(text).to.have.string(newInputValue);
-    //   });
   });
 
   // toggle funktion

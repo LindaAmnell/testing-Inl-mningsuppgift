@@ -3,12 +3,16 @@ import { todos } from "./data.js";
 import { getToday } from "../utils/date.js";
 
 const useStore = create((set) => ({
-  todos: todos, // TODO: "todos" är data som du kan använda under utvecklingen - byt ut den mot din egen testdata
+  todos: todos,
+  setTodos: (newTodo) => set({ todos: newTodo }),
 
-  // TODO: lägg till en funktion "setTodos" så att du kan ändra innehållet i store från dina testfiler
+  addTodo: (newTodo) =>
+    set((state) => ({
+      todos: [...state.todos, newTodo],
+    })),
 
   todayName: getToday(),
-  //   setTodayName: (newDay) => set({ todayName: newDay }),
+  setTodayName: (newDay) => set({ todayName: newDay }),
 
   toggleTodo: (id) =>
     set((state) => ({
@@ -33,23 +37,6 @@ const useStore = create((set) => ({
         todo.id === id ? { ...todo, text: newText } : todo
       ),
     })),
-
-  //   addTodo: (dayName, text) =>
-  //     set((state) => ({
-  //       todos: [
-  //         ...state.todos,
-  //         {
-  //           id:
-  //             state.todos.length > 0
-  //               ? state.todos[state.todos.length - 1].id + 1
-  //               : 1,
-  //           day: dayName,
-  //           done: false,
-  //           late: false,
-  //           text: text,
-  //         },
-  //       ],
-  //     })),
 }));
 
 export { useStore };

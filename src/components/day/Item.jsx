@@ -30,36 +30,43 @@ const Item = ({ item }) => {
 
   return (
     <div data-cy="item" className="item">
-      <input
-        data-cy="toggle-input"
-        type="checkbox"
-        checked={item.done}
-        onChange={handleToggle}
-      />
-      {!isEditing ? (
-        <label className={itemClass}>{item.text}</label>
-      ) : (
+      <div>
         <input
-          type="text"
-          value={editText}
-          data-cy="input-change"
-          onChange={handleEditChange}
+          data-cy="toggle-input"
+          type="checkbox"
+          checked={item.done}
+          onChange={handleToggle}
         />
-      )}
-      {/* <span title="Snooza">💤</span> */}
-
-      {!isEditing ? (
-        <span title="Ändra" data-cy="change" onClick={handeleEditingClick}>
-          ✍️
+        {!isEditing ? (
+          <label className={itemClass}>{item.text}</label>
+        ) : (
+          <input
+            type="text"
+            value={editText}
+            data-cy="input-change"
+            onChange={handleEditChange}
+          />
+        )}
+        {/* <span title="Snooza">💤</span> */}
+      </div>
+      <div>
+        {!isEditing ? (
+          <span
+            className="change"
+            title="Ändra"
+            data-cy="change"
+            onClick={handeleEditingClick}>
+            ✍️
+          </span>
+        ) : (
+          <span data-cy="save" onClick={handleSaveClick}>
+            💾
+          </span>
+        )}
+        <span onClick={handleDeleteClick} data-cy="delete" title="Ta bort">
+          🗑️
         </span>
-      ) : (
-        <span data-cy="save" onClick={handleSaveClick}>
-          💾
-        </span>
-      )}
-      <span onClick={handleDeleteClick} data-cy="delete" title="Ta bort">
-        🗑️
-      </span>
+      </div>
     </div>
   );
 };

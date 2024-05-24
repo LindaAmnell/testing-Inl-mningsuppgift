@@ -12,19 +12,23 @@ const Day = ({ day, dIndex }) => {
     "Lördag",
     "Söndag",
   ];
-  //   const [newTodo, setNewTodo] = useState("");
-  //   const [showInput, setShowInput] = useState(false);
-  //   const addTodo = useStore((state) => state.addTodo);
-
-  //   const handleAddTodo = (e, dayName) => {
-  //     e.preventDefault();
-  //     if (newTodo.trim() !== "") {
-  //       addTodo(dayName, newTodo);
-  //       setNewTodo("");
-  //       setShowInput(false);
-  //     }
-  //   };
-
+  const addTodo = useStore((state) => state.addTodo);
+  const [newTodoText, setNewTodoText] = useState("");
+  const [isAdding, setIsAdding] = useState(false);
+  const handleAddTodo = () => {
+    if (newTodoText.trim()) {
+      const newTodo = {
+        id: Date.now(),
+        day: dayName[dIndex].substring(0, 2).toLowerCase(),
+        done: false,
+        late: false,
+        text: newTodoText,
+      };
+      addTodo(newTodo);
+      setNewTodoText("");
+      setIsAdding(false);
+    }
+  };
   return (
     <div className="day">
       <h2 data-cy="the-day" className="the-days">
@@ -33,26 +37,36 @@ const Day = ({ day, dIndex }) => {
       {day.map((item) => (
         <Item key={item.id} item={item} />
       ))}
-      {/* {showInput ? (
+
+      {isAdding && (
         <div>
           <input
+            data-cy="input-new-todo"
             type="text"
-            value={newTodo}
-            onChange={(e) => setNewTodo(e.target.value)}
-            placeholder="Skriv din uppgift här"
+            value={newTodoText}
+            onChange={(e) => setNewTodoText(e.target.value)}
+            placeholder="Ny uppgift"
           />
-          <button onClick={handleAddTodo} type="submit">
-            Spara
+          <button
+            data-cy="spara-todo"
+            onClick={handleAddTodo}
+            className="new-task-btn">
+            Lägg till
           </button>
-          <button type="button" onClick={() => setShowInput(false)}>
+          <button onClick={() => setIsAdding(false)} className="cancel-btn">
             Avbryt
           </button>
         </div>
-      ) : (
-        <button className="new-task-btn " onClick={() => setShowInput(true)}>
+      )}
+
+      {!isAdding && (
+        <button
+          data-cy="new-todo"
+          onClick={() => setIsAdding(true)}
+          className="new-task-btn">
           Ny uppgift
         </button>
-      )} */}
+      )}
     </div>
   );
 };

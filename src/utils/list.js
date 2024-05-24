@@ -1,12 +1,12 @@
 function splitTodosIntoDays(todos) {
-  const mo = todos.filter((t) => t.day === "mo");
+  const må = todos.filter((t) => t.day === "må");
   const ti = todos.filter((t) => t.day === "ti");
   const on = todos.filter((t) => t.day === "on");
   const to = todos.filter((t) => t.day === "to");
   const fr = todos.filter((t) => t.day === "fr");
-  const lo = todos.filter((t) => t.day === "lo");
-  const so = todos.filter((t) => t.day === "so");
+  const lö = todos.filter((t) => t.day === "lö");
+  const sö = todos.filter((t) => t.day === "sö");
 
-  return [mo, ti, on, to, fr, lo, so];
+  return [må, ti, on, to, fr, lö, sö];
 }
 export { splitTodosIntoDays };

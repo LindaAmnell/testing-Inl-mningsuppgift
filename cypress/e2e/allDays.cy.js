@@ -1,4 +1,4 @@
-//Som en student vill jag att veckans alla dagar ska visas, så att jag kan välja fritt när jag vill göra mina uppgifter.
+//1Som en student vill jag att veckans alla dagar ska visas, så att jag kan välja fritt när jag vill göra mina uppgifter.
 
 describe("show all weekendays", () => {
   it("can i see all days", () => {

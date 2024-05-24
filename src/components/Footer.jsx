@@ -1,12 +1,12 @@
 // TODO: hämta dagens datum från store
-import { getToday } from "../utils/date";
+import { useStore } from "../data/store";
 
 const Footer = () => {
-  const today = getToday();
+  const today = useStore((state) => state.todayName);
 
   return (
     <footer>
-      <p> Idag är det: {today} </p>
+      <p data-cy="today"> Idag är det: {today} </p>
       <p> Studieguide | 2024 </p>
     </footer>
   );
